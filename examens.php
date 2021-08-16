@@ -28,7 +28,7 @@ $nb_examens = mysqli_num_rows($examens);
             $un_examen = mysqli_fetch_assoc($examens);           
     ?>
             <div>
-                <a href="#"><?php echo $un_examen["titre"]; ?></a>
+                <a href="notes.php?examen_id=<?= $un_examen["id"] ?>"><?php echo $un_examen["titre"]; ?></a>
             </div>
     <?php
         }
