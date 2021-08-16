@@ -1,13 +1,15 @@
 <?php
 include("bdd.php");
 
-$sql = "SELECT * 
-        FROM cours 
-        ORDER BY titre ASC
+$cours_id = $_GET["id"];
+
+$sql = "SELECT *
+        FROM examens
+        WHERE cours_id = " . $cours_id . "
         ";
 
-$cours = mysqli_query($bdd, $sql);
-$nb_cours = mysqli_num_rows($cours);
+$examens = mysqli_query($bdd, $sql);
+$nb_examens = mysqli_num_rows($examens);
 
 ?>
 <!DOCTYPE html>
@@ -20,15 +22,13 @@ $nb_cours = mysqli_num_rows($cours);
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Liste de cours</h1>
+    <h1>Liste d'examens</h1>
     <?php
-        for($i = 0; $i < $nb_cours; $i++){
-            $un_cours = mysqli_fetch_assoc($cours);           
+        for($i = 0; $i < $nb_examens; $i++){
+            $un_examen = mysqli_fetch_assoc($examens);           
     ?>
             <div>
-                <a href="examens.php?id=<?= $un_cours["id"]; ?>">
-                    <?= $un_cours["titre"]; ?>
-                </a>
+                <a href="#"><?php echo $un_examen["titre"]; ?></a>
             </div>
     <?php
         }
