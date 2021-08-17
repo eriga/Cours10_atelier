@@ -1,11 +1,15 @@
 <?php
 include("bdd.php");
 
+/* Si le paramètre GET["id"] n'existe pas
+*  on redirige automatiquement vers index.php
+*/
 if(isset($_GET["id"]) == false){
     header("location:index.php");
     exit();
 }
 
+// Récupération du paramètre GET
 $cours_id = $_GET["id"];
 
 $sql = "SELECT *
@@ -16,6 +20,7 @@ $sql = "SELECT *
 $examens = mysqli_query($bdd, $sql);
 $nb_examens = mysqli_num_rows($examens);
 
+// Deuxième requête pour obtenir le titre du cours de l'examen
 $sql_cours = "SELECT titre FROM cours WHERE id = " . $cours_id;
 $cours = mysqli_query($bdd, $sql_cours);
 $le_cours = mysqli_fetch_assoc($cours);

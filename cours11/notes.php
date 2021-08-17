@@ -1,6 +1,9 @@
 <?php
 include("bdd.php");
 
+/* Si le paramètre GET["examen_id"] n'existe pas
+*  on redirige automatiquement vers index.php
+*/
 if(isset($_GET["examen_id"]) == false){
     header("location:index.php");
     exit();
@@ -20,6 +23,7 @@ $sql = "SELECT notes.*, etudiants.prenom, examens.note_maximale
 $notes = mysqli_query($bdd, $sql);
 $nb_notes = mysqli_num_rows($notes);
 
+// Deuxième requête pour obtenir l'id du cours
 $sql_examen = "SELECT cours_id
                FROM examens
                WHERE id = " . $examen_id

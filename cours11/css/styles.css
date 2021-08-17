@@ -5,10 +5,12 @@ body {
     margin: 0;
 }
 
+
 .container {
     width: 80%;
     margin: 0 auto;
 }
+
 
 a {
     color: rgb(155, 155, 199);

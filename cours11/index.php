@@ -1,12 +1,15 @@
 <?php
 include("bdd.php");
 
+// Requête
 $sql = "SELECT * 
         FROM cours 
         ORDER BY titre ASC
         ";
 
+// Exécution
 $cours = mysqli_query($bdd, $sql);
+// Nombre de résultats
 $nb_cours = mysqli_num_rows($cours);
 
 ?>
