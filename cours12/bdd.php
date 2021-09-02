@@ -7,6 +7,8 @@ if($bdd == false){
     exit();
 }
 
+
+// COMMENTAIRES
 // Sélection de la base de données
 mysqli_select_db($bdd, "cours8_ecole");
 
